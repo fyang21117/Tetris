@@ -1,0 +1,20 @@
+buildscript {
+    repositories {
+        jcenter() //指定maven镜像，下同
+        google()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.2.0' //指定classpath
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+allprojects {
+    repositories {
+        jcenter()
+        google()
+    }
+}
+task clean(type: Delete) {
+    delete rootProject.buildDir //指定clean的时候清除掉指定目录
+}
