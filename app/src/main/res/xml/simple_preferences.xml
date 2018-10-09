@@ -13,11 +13,12 @@
         android:summary="@string/pref_popup_summary"
         android:defaultValue="true"
         android:title="@string/pref_popup_title"/>
-    
+
+    <!--PreferenceCategory标签内部能存放复选框，输入框，列表等显示控件-->
     <PreferenceCategory
         android:title="@string/pref_category_sound"
         android:key="sound_settings">
-        
+        <!--进度条-->
 	    <com.fyang21117.tetris.SeekBarPreference
 	        android:key="pref_soundvolume"
 	        android:title="@string/soundvolume_pref_title"
@@ -26,12 +27,12 @@
 	        robobunny:min="0"
 	        robobunny:unitsLeft=""
 	        robobunny:unitsRight=" %" />
-        
+
 	    <CheckBoxPreference
 	        android:key="pref_button_sound"
 	        android:defaultValue="false"
 	        android:title="@string/pref_button_sound_title"/>
-	    
+
 		<com.fyang21117.tetris.SeekBarPreference
 			android:key="pref_musicvolume"
 			android:title="@string/musicvolume_pref_title"
@@ -74,14 +75,11 @@
     <PreferenceCategory
         android:title="@string/pref_category_other"
         android:key="other_settings">
-	    
-        
 	    <Preference
 	        android:title="@string/pref_category_advanced"
 	        android:key="pref_advanced"
 	        android:icon="@drawable/ic_settings">
-		    
 	    </Preference>
-	    
     </PreferenceCategory>
+
 </PreferenceScreen>

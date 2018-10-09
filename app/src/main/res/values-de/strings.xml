@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     
-    <string name="app_name">Blockinger</string>
+    <string name="app_name">Tetris</string>
     <string name="action_settings">Einstellungen</string>
     <string name="action_backtomain">Zurück</string>
     <string name="action_about">Über Blockinger</string>

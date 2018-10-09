@@ -86,7 +86,7 @@ public class MainActivity extends ListActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		PreferenceManager.setDefaultValues(this, R.xml.simple_preferences, true);//设置页面
-		PreferenceManager.setDefaultValues(this, R.xml.advanced_preferences, true);//默认设置页面
+		PreferenceManager.setDefaultValues(this, R.xml.advanced_preferences, true);//更多设置页面
 		
 		/* Create Music */
 		sound = new Sound(this);

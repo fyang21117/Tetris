@@ -10,6 +10,7 @@
     <color name="square_cyan">#7BCDC8</color>
     <color name="square_empty">#00000000</color>
     <color name="square_error">#FFFFFF</color>
+
     <integer name="spalten">10</integer>
     <integer name="zeilen">18</integer>
     <integer name="spaltenoffset">35</integer>

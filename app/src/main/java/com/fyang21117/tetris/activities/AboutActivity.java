@@ -19,10 +19,10 @@ public class AboutActivity extends PreferenceActivity {
 	@Override
 	protected void onPostCreate(Bundle savedInstanceState) {
 		super.onPostCreate(savedInstanceState);
-
 		addPreferencesFromResource(R.xml.about_menu);
-	        ActionBar actionBar = getActionBar();
-	        if(actionBar!=null)
+
+		ActionBar actionBar = getActionBar();
+		if(actionBar!=null)
 	        actionBar.setDisplayHomeAsUpEnabled(true);
 		setVolumeControlStream(AudioManager.STREAM_MUSIC);
         

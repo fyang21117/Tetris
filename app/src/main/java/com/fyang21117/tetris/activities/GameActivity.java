@@ -67,13 +67,13 @@ public class GameActivity extends FragmentActivity implements OnClickListener,On
 	private boolean layoutSwap;
 
 	public Button pause;
-	public ImageButton rotateLeft;
-	public ImageButton rotateRight;
-	public ImageButton hardDrop;
-	public ImageButton softDrop;
-	public ImageButton left;
-	public ImageButton right;
-	public ImageButton board;
+    public ImageButton rotateLeft;
+    public ImageButton rotateRight;
+    public ImageButton hardDrop;
+    public ImageButton softDrop;
+    public ImageButton left;
+    public ImageButton right;
+    public BlockBoardView boardView;
 
 	public static final int NEW_GAME = 0;
 	public static final int RESUME_GAME = 1;
@@ -83,7 +83,7 @@ public class GameActivity extends FragmentActivity implements OnClickListener,On
 		super.onCreate(savedInstanceState);
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);//
 		if(PreferenceManager.getDefaultSharedPreferences(this).getBoolean("pref_layoutswap", false)) {
-			setContentView(R.layout.activity_game_alt);
+			setContentView(R.layout.activity_game_alt);//偏好设置，hardDrop和softDrop位置
 			layoutSwap = true;
 		} else {
 			setContentView(R.layout.activity_game);
@@ -91,11 +91,11 @@ public class GameActivity extends FragmentActivity implements OnClickListener,On
 		}
 
 		/* Read Starting Arguments */
-		Bundle b = getIntent().getExtras();
+		Bundle b = getIntent().getExtras();//返回intent启动的附带数据
 		int value = NEW_GAME;
 		
 		/* Create Components */
-		game = (GameState)getLastCustomNonConfigurationInstance();
+		game = (GameState)getLastCustomNonConfigurationInstance();//获取页面的数据
 		if(game == null) {
 			if(b!=null)
 				value = b.getInt("mode");
@@ -133,40 +133,40 @@ public class GameActivity extends FragmentActivity implements OnClickListener,On
 		rotateLeft = findViewById(R.id.rotateLeftButton);
 		right = findViewById(R.id.rightButton);
 		left = findViewById(R.id.leftButton);
-		board = findViewById(R.id.boardView);
+        boardView = findViewById(R.id.boardView);
 
 		pause.setOnClickListener(this);
-		hardDrop.setOnClickListener(this);
-		softDrop.setOnClickListener(this);
-		rotateRight.setOnClickListener(this);
-		rotateLeft.setOnClickListener(this);
-		right.setOnClickListener(this);
-		left.setOnClickListener(this);
-		board.setOnClickListener(this);
+		hardDrop.setOnTouchListener(this);
+		softDrop.setOnTouchListener(this);
+		rotateRight.setOnTouchListener(this);
+		rotateLeft.setOnTouchListener(this);
+		right.setOnTouchListener(this);
+		left.setOnTouchListener(this);
+        boardView.setOnTouchListener(this);
 
-		((BlockBoardView)findViewById(R.id.boardView)).init();
-		((BlockBoardView)findViewById(R.id.boardView)).setHost(this);
+        boardView.init();
+        boardView.setHost(this);
 	}
 
 	@Override
-	public boolean onTouch(View v,MotionEvent event){
+    public boolean onTouch(View v,MotionEvent event){
 		switch (v.getId()){
 			case R.id.boardView:{
 				if(event.getAction() == MotionEvent.ACTION_DOWN) {
 					controls.boardPressed(event.getX(), event.getY());
 				} else if (event.getAction() == MotionEvent.ACTION_UP) {
 					controls.boardReleased();
-				}
-				}break;
+				} }break;
+
 			case R.id.leftButton:{
 				if(event.getAction() == MotionEvent.ACTION_DOWN) {
-					controls.rightButtonPressed();
+					controls.leftButtonPressed();
 					left.setPressed(true);
 				} else if (event.getAction() == MotionEvent.ACTION_UP) {
-					controls.rightButtonReleased();
+					controls.leftButtonReleased();
 					left.setPressed(false);
-				}
-				}break;
+				} }break;
+
 			case R.id.rightButton:{
 				if(event.getAction() == MotionEvent.ACTION_DOWN) {
 					controls.rightButtonPressed();
@@ -174,8 +174,8 @@ public class GameActivity extends FragmentActivity implements OnClickListener,On
 				} else if (event.getAction() == MotionEvent.ACTION_UP) {
 					controls.rightButtonReleased();
 					right.setPressed(false);
-				}
-				}break;
+				} }break;
+
 			case R.id.hardDropButton:{
 				if(event.getAction() == MotionEvent.ACTION_DOWN) {
 					controls.downButtonPressed();
@@ -183,47 +183,47 @@ public class GameActivity extends FragmentActivity implements OnClickListener,On
 				} else if (event.getAction() == MotionEvent.ACTION_UP) {
 					controls.downButtonReleased();
 					hardDrop.setPressed(false);
-				}
-				}break;
-			case R.id.softDropButton:{
+                } }break;
+
+            case R.id.softDropButton:{
 				if(event.getAction() == MotionEvent.ACTION_DOWN) {
 					controls.dropButtonPressed();
 					softDrop.setPressed(true);
 					} else if (event.getAction() == MotionEvent.ACTION_UP) {
 						controls.dropButtonReleased();
 						softDrop.setPressed(false);
-				}
-				}break;
-			case R.id.rotateLeftButton:{
+                } }break;
+
+            case R.id.rotateLeftButton:{
 				if(event.getAction() == MotionEvent.ACTION_DOWN) {
 					controls.rotateLeftPressed();
 					rotateLeft.setPressed(true);
 				} else if (event.getAction() == MotionEvent.ACTION_UP) {
 					controls.rotateLeftReleased();
 					rotateLeft.setPressed(false);
-				}
-				}break;
-			case R.id.rotateRightButton:{
+                } }break;
+
+            case R.id.rotateRightButton:{
 				if(event.getAction() == MotionEvent.ACTION_DOWN) {
 					controls.rotateRightPressed();
 					rotateRight.setPressed(true);
 				} else if (event.getAction() == MotionEvent.ACTION_UP) {
 					controls.rotateRightReleased();
 					rotateRight.setPressed(false);
-				}
-				}break;
-			default:break;
+                } }break;
+
+            default:break;
 		}
 		return true;
 	}
 	@Override
 	public void onClick(View view)
 	{
-		switch (view.getId()){
-			case R.id.pausebutton_1:{
-				GameActivity.this.finish();
-			}
-		}
+		switch (view.getId()) {
+            case R.id.pausebutton_1: {
+                GameActivity.this.finish();
+            }
+        }
 	}
 	/*
 	 * Called by BlockBoardView upon completed creation

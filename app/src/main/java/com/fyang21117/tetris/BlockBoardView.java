@@ -46,7 +46,7 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.SurfaceHolder.Callback;
 
-
+//游戏显示页面上部分
 public class BlockBoardView extends SurfaceView implements Callback {
 
 	private GameActivity host;

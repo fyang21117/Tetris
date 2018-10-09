@@ -56,8 +56,8 @@ public class Board extends Component {
 	private Row tempRow;
 	//private Context context;
 	private boolean valid;
-	private Bitmap blockMap;
-	private Canvas blockVas;
+	private Bitmap blockMap;//位图文件
+	private Canvas blockVas;//一个指定尺寸的矩形框
 	
 	public Board(GameActivity ga) {
 		super(ga);

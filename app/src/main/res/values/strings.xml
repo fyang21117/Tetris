@@ -131,10 +131,10 @@
 	<string name="donate_button">Go to Paypal</string>
     
     
-    <string name="pref_category_sound">SOUND</string>
-    <string name="pref_category_vibration">VIBRATION</string>
-    <string name="pref_category_other">OTHER</string>
-    <string name="pref_category_advanced">Advanced</string>
+    <string name="pref_category_sound">声音</string>
+    <string name="pref_category_vibration">振动</string>
+    <string name="pref_category_other">other</string>
+    <string name="pref_category_advanced">更多</string>
     <string name="pref_category_layout">LAYOUT</string>
     
     

@@ -42,9 +42,7 @@ public class Score {
 	private long score;
 	private String playerName;
 	
-	public Score() {
-		
-	}
+	public Score() {	}
 
 	  public long getId() {
 	    return id;

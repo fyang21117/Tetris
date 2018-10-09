@@ -95,7 +95,8 @@ public class ScoreDataSource {
 
 	public Cursor getCursor() {
 		return database.query(HighscoreOpenHelper.TABLE_HIGHSCORES,
-		        allColumns, null, null, null, null, HighscoreOpenHelper.COLUMN_SCORE + " DESC");
+		        allColumns, null, null, null, null,
+                HighscoreOpenHelper.COLUMN_SCORE + " DESC");//以分数降序进行排列
 	}
 	  
 }
